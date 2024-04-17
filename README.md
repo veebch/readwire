@@ -9,7 +9,7 @@ A script to be run after a kindle is connected to a linux computer via USB. It m
 
 Once you've got your clippings, you can do stuff with them (see photo for example). 
 
-The benefit of using this approach rather than the Amazon cloud service is that your device also contains highlights for books that you did not purchase via the amazon store.
+The benefit of using this approach (rather than the Amazon cloud service) is that your device also contains highlights for books that you did not purchase via the Amazon store.
 
 # Prerequisites
 
