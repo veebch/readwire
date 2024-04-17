@@ -30,7 +30,9 @@ def find_kindle_mount_point():
 
 def copy_clippings_file(mount_point):
     clippings_path = os.path.join(mount_point, "documents", "My Clippings.txt")
-    target_path = os.path.join(os.getenv("HOME"), "MyClippings.txt")
+    target_path = os.path.join(
+        os.getcwd(), "My_Clippings.txt"
+    )  # Save to the current working directory
     print(f"Looking for Clippings at {clippings_path}")
     if os.path.exists(clippings_path):
         try:
