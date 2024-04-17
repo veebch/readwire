@@ -1,7 +1,26 @@
 # Read-wire
 
-A script that runs on a linux machine and watches for a Kindle being connected via USB. It makes a copy of the clippings file from the kindle to the current working directory on the machine.
+A script to be run after a kindle is connected to a linux computer via USB. It makes a copy of the clippings file from the kindle to the current working directory on the machine.
 
 This is a helper script that allows the file to then be used for other applications. 
 
-The benefit of using this over the Amazon cloud service is that your device also contains highlights for books that you did not purchase via the amazon store. 
+The benefit of using this approach rather than the Amazon cloud service is that your device also contains highlights for books that you did not purchase via the amazon store.
+
+# Prerequisites
+
+Make sure that your machine is automounting usb drives
+
+# Installation
+
+```
+git clone https://github.com/veebch/readwire.git
+cd readwire
+```
+
+# Running
+
+`python3 monitor.py`
+
+If all goes well, your clippings are now locally stored in a file called `My_Clippings.txt` ready to be used in whatever way you find useful.
+
+
