@@ -33,5 +33,5 @@ If all goes well, your clippings are now locally stored in a file called `My_Cli
 
 # To Do
 
-Add `udev` instructions so the script is automatically triggered on connection
+Add `udev` instructions so the script is automatically triggered whenever a kindle is connected
 
