@@ -8,7 +8,7 @@ A script to be run after an Amazon Kindle is connected to a computer via USB. It
 
 Once you've got your clippings, you can do stuff with them (see photo for example). 
 
-The benefit of using this approach (rather than the Amazon cloud service) is that your device also contains highlights for books that you did not purchase via the Amazon store.
+The benefit of using the direct device approach (rather than the Amazon cloud service) is that **your device also contains highlights for books that you did not purchase via the Amazon store**.
 
 # Prerequisites
 
