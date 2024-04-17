@@ -12,7 +12,7 @@ The benefit of using this approach (rather than the Amazon cloud service) is tha
 
 # Prerequisites
 
-Make sure that your machine is automounting USB drives
+Make sure that your machine is automounting USB drives. It assumes you are running a Terminal of some sort.
 
 # Installation
 
