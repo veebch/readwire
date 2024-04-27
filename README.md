@@ -4,7 +4,7 @@
 
 [![YouTube Channel Views](https://img.shields.io/youtube/channel/views/UCz5BOU9J9pB_O0B8-rDjCWQ?style=flat&logo=youtube&logoColor=red&labelColor=white&color=ffed53)](https://www.youtube.com/channel/UCz5BOU9J9pB_O0B8-rDjCWQ) [![Instagram](https://img.shields.io/github/stars/veebch?style=flat&logo=github&logoColor=black&labelColor=white&color=ffed53)](https://www.instagram.com/v_e_e_b/)
 
-A script to be run after an Amazon Kindle is connected to a computer via USB. It makes a copy of the clippings file from the kindle to the current working directory on the machine.
+A script to be run after an Amazon Kindle is connected to a computer via USB. It makes a copy of the clippings file from the kindle to the current working directory on the machine, as well as producing a cleaned up (duplicates removed) tsv file of them.
 
 Once you've got your clippings, you can do stuff with them (see photo for example). 
 
