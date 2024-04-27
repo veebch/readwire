@@ -1,6 +1,7 @@
 import subprocess
 import os
 import shutil
+import re
 
 
 def find_kindle_mount_point():
@@ -44,6 +45,52 @@ def copy_clippings_file(mount_point):
         print("MyClippings.txt not found on the device.")
 
 
+def parse_clippings_from_file(file_path):
+    # Open and read the contents of the clippings file using 'utf-8-sig' to handle BOM if present
+    with open(file_path, "r", encoding="utf-8-sig") as file:
+        clippings = file.read()
+
+    # Manually remove any stray BOM characters throughout the file
+    clippings = clippings.replace("\ufeff", "")
+
+    # Regex to split the entries and remove unnecessary lines and trim spaces
+    entries = re.split(r"={10,}", clippings)
+    parsed_entries = []
+    unique_entries = set()
+    for entry in entries:
+        entry = re.sub(
+            r"^-.*$", "", entry, flags=re.MULTILINE
+        ).strip()  # Remove highlight details
+        if entry:
+            # Extract the book title and the highlight text
+            title_match = re.search(r"^(.*?)\n", entry, re.MULTILINE | re.DOTALL)
+            highlight_match = re.search(r"\n(.+)", entry, re.MULTILINE | re.DOTALL)
+            if title_match and highlight_match:
+                title = title_match.group(1).strip()
+                title = re.sub(
+                    r"\(.*?\)$", "", title
+                ).strip()  # Remove author name in parentheses
+                highlight = highlight_match.group(1).strip()
+                # Combine title and highlight to ensure uniqueness
+                combined = f"{title}\t{highlight}"
+                if combined not in unique_entries:
+                    unique_entries.add(combined)
+                    parsed_entries.append((highlight, title))
+    return parsed_entries
+
+
+def save_parsed_clippings_to_tsv(parsed_entries, output_file_path):
+    # Save the parsed clippings into a TSV file format
+    with open(output_file_path, "w", encoding="utf-8") as file:
+        file.write("Highlight\tBook Title\n")
+        for highlight, title in parsed_entries:
+            file.write(f"{highlight}\t{title}\n")
+
+
+# Path to the clippings file and the output file
+clippings_file_path = "My_Clippings.txt"
+output_tsv_path = "clippings_parsed.tsv"
+
 # Find Kindle mount point
 kindle_mount = find_kindle_mount_point()
 if kindle_mount:
@@ -51,3 +98,9 @@ if kindle_mount:
     copy_clippings_file(kindle_mount)
 else:
     print("Kindle not found or not mounted.")
+
+# Parse clippings from file and save to a new TSV file
+parsed_clippings = parse_clippings_from_file(clippings_file_path)
+save_parsed_clippings_to_tsv(parsed_clippings, output_tsv_path)
+
+print(f"Clippings parsed and saved to {output_tsv_path}")
