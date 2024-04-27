@@ -38,11 +38,11 @@ def copy_clippings_file(mount_point):
     if os.path.exists(clippings_path):
         try:
             shutil.copy(clippings_path, target_path)
-            print(f"Copied MyClippings.txt to {target_path}")
+            print(f"Copied My Clippings.txt to {target_path}")
         except Exception as e:
             print(f"Failed to copy file: {e}")
     else:
-        print("MyClippings.txt not found on the device.")
+        print("My Clippings.txt not found on the device.")
 
 
 def parse_clippings_from_file(file_path):
